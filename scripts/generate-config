@@ -1,0 +1,19 @@
+#!/bin/bash -e
+
+source /common
+
+for index in "${!hops[@]}"
+do
+    get_host_info
+
+    host="Host hop_$index"
+    if [ $index = $last_index ]; then
+        host+=" target"
+    fi
+
+    echo "$host"
+    echo -e "\tUser $user"
+    echo -e "\tHostname $hostname"
+    [ $index = 0 ] || echo -e "\tProxyCommand ssh -W %h:%p hop_$((index-1))"
+    echo
+done

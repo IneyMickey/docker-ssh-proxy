@@ -1,0 +1,11 @@
+#!/bin/bash
+
+IFS='|' read -r -a hops <<< "$CONFIG"
+hops_count=${#hops[@]}
+last_index=$((hops_count-1))
+
+function get_host_info {
+    IFS='@' read -r -a hop_info <<< "${hops[$index]}"
+    user=${hop_info[0]}
+    hostname=${hop_info[1]}
+}

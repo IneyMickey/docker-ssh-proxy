@@ -1,0 +1,12 @@
+#!/bin/bash -e
+
+mkdir -p /root/.ssh
+if [ ! -f /root/.ssh/config ]; then
+    /generate-config > /root/.ssh/config
+fi
+
+if [ "$1" = provision ]; then
+    /provision
+    exit 0
+fi
+ssh -N -D *:4444 target

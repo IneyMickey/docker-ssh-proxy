@@ -1,0 +1,9 @@
+#!/bin/bash -e
+
+source /common
+
+for index in "${!hops[@]}"
+do
+    get_host_info
+    ssh-copy-id -f "$user@$hostname"
+done
