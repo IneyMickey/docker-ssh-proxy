@@ -7,6 +7,7 @@ RUN apk add --no-cache \
   bash
 
 ENV CONFIG="user1@hostname1|user2@hostname2"
+ENV PORT=4445
 COPY scripts/ /
 
 ENTRYPOINT ["/entrypoint"]
